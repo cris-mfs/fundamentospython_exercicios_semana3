@@ -35,30 +35,28 @@ def criar_perfil():
         "Hobbies": hobbies,
         "Descrição": descricao
         }
-      
-    return novo_perfil 
+    print("Novo perfil criado com sucesso.")
+    print("Nome: ", novo_perfil["Nome"])
+    print("Idade: ", novo_perfil["Idade"])
+    print("Profissão: ", novo_perfil["Profissão"]) 
+    print("Hobbies: ", novo_perfil["Hobbies"]) 
+    print("Descrição: ", novo_perfil["Descrição"])      
+    return
 
 def modificar_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende mudar o perfil? "))
-    i = 0
-
-    while True:
-        try:
-            for campos,dados in lista_dicionario[i].items():
-                if dados == chave:
-                    compo_a_mudar = str(input("Qual o campo a mudar? "))
-                    lista_dicionario[i][compo_a_mudar] = input("Qual o novo valor de {}? ".format(compo_a_mudar))
-                    perfil_mudado = lista_dicionario[i]
-                    break
-            i = i + 1
-        except:
-            break
-    return perfil_mudado
+    
+    for personagem in lista_dicionario:
+        if personagem["Nome"] == chave:
+            compo_a_mudar = str(input("Qual o campo a mudar? "))
+            personagem[compo_a_mudar] = input("Qual o novo valor de {}? ".format(compo_a_mudar))
+            print("A personagem {} foi alterada com sucesso.".format(chave))
+    return
 
 def visualizar_personagem(lista_dicionario):
     contador = 1
     for personagem in lista_dicionario:
-        print("Personagem nº ", contador)
+        print("\nPersonagem nº {}:".format(contador))
         print("Nome: ", personagem["Nome"])
         print("Idade: ", personagem["Idade"])
         print("Profissão: ", personagem["Profissão"]) 
@@ -69,33 +67,23 @@ def visualizar_personagem(lista_dicionario):
 
 def remover_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende remover? "))
-    i = 0
-    while True:
-        try:
-            for campos, dados in lista_dicionario[i].items():
-                if dados == chave:
-                    lista_dicionario.pop(i)
-            i = i + 1
-        except:
-            break
+    i=0
+    for personagem in lista_dicionario:
+        if personagem["Nome"] == chave:
+            lista_dicionario.pop(i)
+            print("A perosnagem {} foi removida com sucesso.".format(chave))
+        i=i+1
     return
 
 def pesquisar_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende mostrar o perfil? "))
-    i = 0
-    while True:
-        try:
-            for campos,dados in lista_dicionario[i].items():
-                if dados == chave:
-                    print("Nome: ", lista_dicionario[i]["Nome"])
-                    print("Idade: ", lista_dicionario[i]["Idade"])
-                    print("Profissão: ", lista_dicionario[i]["Profissão"]) 
-                    print("Hobbies: ", lista_dicionario[i]["Hobbies"]) 
-                    print("Descrição: ", lista_dicionario[i]["Descrição"])
-                    break
-            i = i + 1
-        except:
-            break
+    for personagem in lista_dicionario:
+        if personagem["Nome"] == chave:
+            print("Nome: ", personagem["Nome"])
+            print("Idade: ", personagem["Idade"])
+            print("Profissão: ", personagem["Profissão"]) 
+            print("Hobbies: ", personagem["Hobbies"]) 
+            print("Descrição: ", personagem["Descrição"])
     return
 
 while True:
@@ -111,25 +99,27 @@ while True:
     if menu == 1:
         novo_perfil = criar_perfil()
         lista_perfis.append(novo_perfil)
-        print(lista_perfis)
+        input("\nClique ENTER para voltar ao MENU.")
         menu = 0
     
     elif menu == 2:
         modificar_personagem(lista_perfis)
-        print(lista_perfis)
+        input("\nClique ENTER para voltar ao MENU.")
         menu = 0
     
     elif menu == 3:
         remover_personagem(lista_perfis)
-        print(lista_perfis)
+        input("\nClique ENTER para voltar ao MENU.")
         menu = 0
 
     elif menu == 4:
         visualizar_personagem(lista_perfis)
+        input("\nClique ENTER para voltar ao MENU.")
         menu = 0
 
     elif menu == 5:
         pesquisar_personagem(lista_perfis)
+        print("\nClique ENTER para voltar ao MENU.")
         menu = 0
     
     elif menu == 6:
