@@ -1,7 +1,8 @@
 # Exercício da Ficha de Trabalho 3
+# código Python é um programa que permite criar, modificar, visualizar, remover e pesquisar perfis de personagens
 
-lista_perfis=[]
-perfil1 = { 
+lista_perfis=[] # lista vazia para conter os dicionários das personagens
+perfil1 = {  
         "Nome": "Eduardo",
         "Idade": 13,
         "Profissão": "bombeiro",
@@ -17,9 +18,10 @@ perfil2 = {
         "Descrição": "é um tipo"
         }
 
-lista_perfis.append(perfil1)
+lista_perfis.append(perfil1) # Adição dos perfis de perosnagens pré-definidos
 lista_perfis.append(perfil2)
 
+#Função criar_perfil(), que solicita ao usuário que insira informações sobre um novo personagem e cria um novo dicionário de perfil com essas informações.
 def criar_perfil():
     
     nome = input("Insira o nome da persoagem: ")
@@ -42,7 +44,7 @@ def criar_perfil():
     print("Hobbies: ", novo_perfil["Hobbies"]) 
     print("Descrição: ", novo_perfil["Descrição"])      
     return
-
+#Função modificar os campos permite modificar um perfil de personagem existente perguntado pelo Nome
 def modificar_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende mudar o perfil? "))
     
@@ -52,7 +54,7 @@ def modificar_personagem(lista_dicionario):
             personagem[compo_a_mudar] = input("Qual o novo valor de {}? ".format(compo_a_mudar))
             print("A personagem {} foi alterada com sucesso.".format(chave))
     return
-
+#Função que exibe na tela todos os perfis de personagens presentes na lista fornecida como argumento
 def visualizar_personagem(lista_dicionario):
     contador = 1
     for personagem in lista_dicionario:
@@ -64,7 +66,7 @@ def visualizar_personagem(lista_dicionario):
         print("Descrição: ", personagem["Descrição"])
         contador = contador +1
     return
-
+# Função remover_personagem(), que remove um perfil de personagem da lista fornecida como argumento com base no nome do personagem.
 def remover_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende remover? "))
     i=0
@@ -74,7 +76,7 @@ def remover_personagem(lista_dicionario):
             print("A perosnagem {} foi removida com sucesso.".format(chave))
         i=i+1
     return
-
+# Função pesquisar_personagem(), que procura uma personagem específica pelo nome e exibe na tela todas as informações dessa personagem.
 def pesquisar_personagem(lista_dicionario):
     chave=str(input("Qual o nome da personagem que pretende mostrar o perfil? "))
     for personagem in lista_dicionario:
@@ -86,6 +88,8 @@ def pesquisar_personagem(lista_dicionario):
             print("Descrição: ", personagem["Descrição"])
     return
 
+# Neste loop While exibe-se o menu para o usuário e executa as ações correspondentes com base na opção selecionada. O loop continua indefinidamente até que a opção "6" seja escolhida
+# o número selecionado corresponde a cada função deifinida anteriormente
 while True:
 
     menu = int(input("\n1 - Adicionar um novo perfil de personagem;\n"
